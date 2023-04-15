@@ -1,8 +1,14 @@
-export const Home = () => {
+import image from "../image/pexels-photomix-company-1038628 (1) (1).jpg"
+
+ const Home = () => {
   return (
     <main>
-      <h1>Welcome</h1>
-      <img src="https://via.placeholder.com/960x240" alt="" />
+      
+      <div>
+        <h1>Save all your contacts in one place!</h1>
+        <img src={image} alt="" />
+      </div>
+      
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto,
         laboriosam placeat incidunt rem illum animi nemo quibusdam quia
@@ -11,3 +17,5 @@ export const Home = () => {
     </main>
   );
 };
+
+export default Home;

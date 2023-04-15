@@ -35,8 +35,7 @@ export const PhonebookForm = () => {
                 name: '',
                 phone: ''}}
             onSubmit={(values, { resetForm }) => {
-                console.log(values.name)
-                console.log(contacts)
+                
                 const existingContact = contacts.find(contact => contact.name === values.name);
                 if (existingContact) {
                     toast.error(`${values.name} is already exist`);
