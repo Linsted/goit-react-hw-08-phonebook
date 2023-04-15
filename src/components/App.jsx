@@ -13,6 +13,8 @@ import { Route, Routes } from "react-router-dom";
 const Home = lazy(() => import('../pages/Home'));
 const ContactsPage = lazy(() => import('../pages/Contacts'));
 const SignUp = lazy(() => import('../pages/SignUp'));
+const Login = lazy(() => import('../pages/Login'));
+
 
 export const App = () => {
 
@@ -26,6 +28,8 @@ export const App = () => {
         <Route index element={<Home />} />
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+
 
       </Route>
 
