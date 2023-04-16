@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 
-axios.defaults.baseURL = "https://64326724d0127730d2d1c0e5.mockapi.io";
+// axios.defaults.baseURL = "https://64326724d0127730d2d1c0e5.mockapi.io";
 
 
 
