@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Item } from './ListItem.styled';
 import { Button } from './ListItem.styled';
 
-export const ListItem = ({ contact : {name, phone, id}, onClick }) => {
+export const ListItem = ({ contact : {name, number: phone, id}, onClick }) => {
     
     
     return (
@@ -17,7 +17,7 @@ export const ListItem = ({ contact : {name, phone, id}, onClick }) => {
 ListItem.propTypes = {
 contact: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
+    number: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,}).isRequired,
 onClick: PropTypes.func.isRequired,
 }

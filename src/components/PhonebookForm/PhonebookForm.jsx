@@ -2,7 +2,7 @@ import { Formik, Field } from 'formik';
 import { object, string } from 'yup';
 import { FormStyled, Label, Button } from './FormStyled.styled';
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from 'redux/operations';
+import { addContact, updateContact } from 'redux/operations';
 import { getContactsFromState } from 'redux/contactsSlice';
 
 
@@ -36,9 +36,12 @@ export const PhonebookForm = () => {
                 phone: ''}}
             onSubmit={(values, { resetForm }) => {
                 
-                const existingContact = contacts.find(contact => contact.name === values.name);
-                if (existingContact) {
-                    toast.error(`${values.name} is already exist`);
+                const existingContact = contacts.filter(contact => { return contact.name === values.name });
+                
+                if (existingContact.length > 0) {
+                    
+                    toast.error(`${values.name} updated`);
+                    dispatch(updateContact(existingContact[0]))
                     resetForm();
                     return;
                 }

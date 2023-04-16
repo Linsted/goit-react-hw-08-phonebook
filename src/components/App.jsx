@@ -4,7 +4,12 @@
 import { useEffect, lazy } from 'react';
 import { SharedLayout } from "./SharedLayout/SharedLayout";
 import { Route, Routes } from "react-router-dom";
-// import { Home } from "pages/Home";
+import { refreshUser } from 'redux/auth/operations';
+import { useDispatch, useSelector } from 'react-redux';
+import { RestrictedRoute } from './RestrictedRoute';
+import { RedirectedRoute } from './RedirectedRoute';
+
+import { Fallback } from './Fallback/Falback';
 
 
 // import ContactsPage from "../pages/Contacts"
@@ -16,25 +21,33 @@ const SignUp = lazy(() => import('../pages/SignUp'));
 const Login = lazy(() => import('../pages/Login'));
 
 
-export const App = () => {
 
-   
+export const App = () => {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+
+
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   
-  return (
-      
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<Home />} />
-        <Route path="contacts" element={<ContactsPage />} />
-        <Route path="signup" element={<SignUp />} />
-        <Route path="login" element={<Login />} />
+  return isRefreshing ? (<Fallback />) : (<Routes>
+    <Route path="/" element={<SharedLayout />}>
+      <Route index element={<Home />} />
+          
+      <Route path="contacts" element={<RestrictedRoute path="contacts" component={<ContactsPage />} redirectTo="/login" />} />
+          
+      <Route path="signup" element={<SignUp />} />
+          
+      <Route path="login" element={<RedirectedRoute path="login" component={<Login />} redirectTo="/contacts" />} />
 
 
-      </Route>
+    </Route>
 
 
-    </Routes>
+  </Routes>
 
 
 

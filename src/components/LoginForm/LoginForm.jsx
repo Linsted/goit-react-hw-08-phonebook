@@ -1,8 +1,8 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form,  ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
-
-import {InputStyledName,InputStyledMail, InputStyledPassword } from "../RegisterForm/RegisterForm.styled"
+import Button from '@mui/material/Button';
+import {InputStyledMail, InputStyledPassword } from "../RegisterForm/RegisterForm.styled"
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
@@ -68,7 +68,7 @@ export const LoginForm = () => {
                         <InputStyledPassword type="password" name="password" id="password" error={errorValidationPassword.toString()} />
                         <ErrorMessage name="password" /></label>
 
-                        <button type='submit'>Sign Up</button>
+                        <Button type='submit'  variant="outlined" size="small" color="secondary" >Log In</Button>
                     </Form>
                 )}
             </Formik>
