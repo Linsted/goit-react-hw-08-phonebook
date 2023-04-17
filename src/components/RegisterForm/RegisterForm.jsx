@@ -27,18 +27,16 @@ export const RegisterForm = () => {
 
     const handleSubmit = (values, { resetForm }) => {
         if (!values.name || !values.email || !values.password) {
-            // console.log(values)
+            
             toast.error(`Please fill in all fields!`,{ duration: 1500 })
             
             !values.name ?   setErrorValidationName(true) : setErrorValidationName(false) ;
             !values.email ?   setErrorValidationMail(true) : setErrorValidationMail(false) ;
             !values.password ?   setErrorValidationPassword(true) : setErrorValidationPassword(false) ;
             
-
-
             return;
-        }
-        // console.log(values);
+        };
+    
         setErrorValidationName(false);
         setErrorValidationMail(false);
         setErrorValidationPassword(false);

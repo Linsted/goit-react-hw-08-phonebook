@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const HeaderStyled = styled.header`
-    background-color: #fff8f8; /* change to the desired background color */
+  
   height: 60px; /* adjust to the desired height */
   display: flex;
   justify-content: space-between;

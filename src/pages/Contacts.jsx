@@ -1,7 +1,7 @@
 import { Contacts } from "../components/Contacts/Contacts"
 import { FilterContacts } from "../components/FilterContacts/FilterContacts"
 import { PhonebookForm } from "../components/PhonebookForm/PhonebookForm";
-import { Section } from "../components/App.styled"
+import { Title, WrapperStyled, ContactsInfoStyled } from "../components/Contacts.styled"
 import { getContactsFromState,getIsLoading, getError } from "redux/contactsSlice";
 import { getFilterState } from "../../src/redux/filterSlice";
 import { fetchContacts } from "redux/operations";
@@ -9,14 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 
 
-const ContactsPage = () => { 
+const ContactsPage = () => {
 
 
 
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const contacts = useSelector(getContactsFromState);
-  const filter = useSelector(getFilterState); 
+  const filter = useSelector(getFilterState);
   const isLoading = useSelector(getIsLoading);
   const error = useSelector(getError);
   
@@ -35,25 +35,30 @@ const dispatch = useDispatch();
 
 
 
-    return (<>
-     <Section>
+  return (<>
+    
 
+      <WrapperStyled>
 
-
-         <h1>Phonebook</h1>
+        <Title>Phonebook</Title>
         
-         < PhonebookForm  />
-         <h2>Contacts</h2>
-         < FilterContacts
-           filter={filter}
-         />
-         {isLoading && !error && <b>Request in progress...</b>}
-         < Contacts
-           contacts={filteredContacts}
+        < PhonebookForm />
+      </WrapperStyled>
+        
+    <WrapperStyled>
+      
+      <Title>Contacts</Title>
+      <ContactsInfoStyled>
+        < FilterContacts
+          filter={filter}
+        />
+        {isLoading && !error && <b>Request in progress...</b>}
+        < Contacts
+          contacts={filteredContacts}
           
-            />
-
-       </Section>
-    </>)
+        /></ContactsInfoStyled>
+      </WrapperStyled>
+    
+  </>)
 };
 export default ContactsPage;

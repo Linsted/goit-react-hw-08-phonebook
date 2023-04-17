@@ -1,6 +1,6 @@
 import { Formik, Field } from 'formik';
 import { object, string } from 'yup';
-import { FormStyled, Label, Button } from './FormStyled.styled';
+import { FormStyled, Label, Button,FieldStyled } from './FormStyled.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, updateContact } from 'redux/operations';
 import { getContactsFromState } from 'redux/contactsSlice';
@@ -58,11 +58,11 @@ export const PhonebookForm = () => {
             <FormStyled>
                  <Toaster />
                 <Label>Name
-                    <Field name="name"/>
+                    <FieldStyled name="name"/>
                 </Label>
                 <Label>
                     Number
-                    <Field
+                    <FieldStyled
                         type="phone"
                         name="phone"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

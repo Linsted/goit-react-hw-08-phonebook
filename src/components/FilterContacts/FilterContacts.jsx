@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Label } from './FilterContacts.styled';
-
+import { Label, InputStyled,IconStyled } from './FilterContacts.styled';
+import { BiSearchAlt } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { filterContact } from 'redux/filterSlice';
 
@@ -12,9 +12,8 @@ export const FilterContacts = ({ onFilter, filter }) => {
 
 
     return (
-        <Label> Find contacts by name
-            <input type="text" name='filter' onChange={(evt) => {
-                // console.log(evt.target.value)
+        <Label> You can filter your contact. Just fill in the name! <IconStyled />
+            <InputStyled type="text" name='filter' onChange={(evt) => {
                 dispatch(filterContact(evt.target.value))
             }} value={filter} />
         </Label>

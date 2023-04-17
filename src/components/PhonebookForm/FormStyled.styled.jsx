@@ -1,40 +1,54 @@
 import styled from '@emotion/styled'
-import { Form } from 'formik'
+import { Form, Field } from 'formik'
 
 export const FormStyled = styled(Form)`
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 4px;
-    margin-bottom: 15px;
-    width: 300px;
-`
+    
 
+    padding: 30px 90px;
+    border-radius: 16px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+   
+`
+export const FieldStyled = styled(Field)`
+padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: none;
+  transition: all 0.3s ease-in-out;
+
+  &:focus{
+    outline: none;
+  border-color: #0077cc;
+  box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.3);
+  };
+
+  &::placeholder{
+     color: #999;
+  }
+`
 export const Label = styled.label`
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 200px;
+   display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  font-family: roboto;
 `
 
 export const Button = styled.button`
-    width: 100px;
-    margin-top: 15px;
-    padding: 5px;
-
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .25rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
+  
+width: 200px;
+padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0077cc;
+  color: #fff;
+  font-size: 18px;
   cursor: pointer;
-    :hover {
-    border-color: rgba(0, 0, 0, 0.15);
-    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
-    color: rgba(0, 0, 0, 0.65);}
- 
+  transition: all 0.2s ease-in-out;
 
-
+  &:hover {
+    background-color: #005ea6;
+  }
 
 `

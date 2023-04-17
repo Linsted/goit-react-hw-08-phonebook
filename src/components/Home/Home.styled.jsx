@@ -21,6 +21,7 @@ export const BackingStyled = styled.div`
 position: relative;
 width: 100%;
 height: auto;
+margin-top: 2px;
    
 `
 
