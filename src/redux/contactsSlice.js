@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts } from "./operations";
-import { addContact } from "./operations";
-import { deleteContact } from "./operations";
+import { fetchContacts,addContact,deleteContact,updateContact } from "./operations";
+
 
 
 const handlePending = state => {
@@ -13,6 +12,11 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
+const handleFulfilled = (state, action) => {
+  state.isLoading = false;
+  state.error = null;
+  state.items.push(action.payload);
+}
 
 
 const contactsInitialState = {
@@ -25,32 +29,44 @@ const contactsInitialState = {
   
 
 const contactsSlice = createSlice({
-    name: "contacts",
-    initialState: contactsInitialState,
+  name: "contacts",
+  initialState: contactsInitialState,
 
-    extraReducers: {
+  extraReducers: {
         
-        [fetchContacts.fulfilled](state, action) {state.items = action.payload},
-        [fetchContacts.rejected]: handleRejected,
+    [fetchContacts.fulfilled](state, action) { state.items = action.payload },
+    [fetchContacts.rejected]: handleRejected,
 
-        [addContact.pending]: handlePending,
-        [addContact.fulfilled](state, action) {
-            state.isLoading = false;
-            state.error = null;
-            state.items.push(action.payload);
-        },
-        [addContact.rejected]: handleRejected,
+    [addContact.pending]: handlePending,
+    [addContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
+    [addContact.rejected]: handleRejected,
 
-        [deleteContact.pending]: handlePending,
-        [deleteContact.fulfilled](state, action) {
-            state.isLoading = false;
-            const index = state.items.findIndex(
-                task => task.id === action.payload.id);
-            state.items.splice(index, 1)},
-        [deleteContact.rejected]: handleRejected,
-
+    [deleteContact.pending]: handlePending,
+    [deleteContact.fulfilled](state, action) {
+      state.isLoading = false;
+      const index = state.items.findIndex(
+        task => task.id === action.payload.id);
+      state.items.splice(index, 1)
+    },
+    [deleteContact.rejected]: handleRejected,
+    [updateContact.pending]: handlePending,
+    [updateContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      console.log(action.payload);
+      const index = state.items.findIndex(
+        task => task.id === action.payload.id);
+      state.items.splice(index, 1, action.payload);
 
     },
+    [updateContact.rejected]: handleRejected,
+
+
+  },
 });
 
 

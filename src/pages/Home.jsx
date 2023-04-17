@@ -22,7 +22,7 @@ const Home = () => {
       
       <BackingStyled >
         { isImageLoaded && <TitleStyled>Save all your contacts <br/> in one place! <br/>
-        { !isLoggedIn && <SpanStyled><NavlinkStyled to="/login">Login</NavlinkStyled></SpanStyled>}</TitleStyled>}
+        { !isLoggedIn ? <SpanStyled><NavlinkStyled to="/login">Login</NavlinkStyled></SpanStyled>: <SpanStyled><NavlinkStyled to="/contacts">Contacts</NavlinkStyled></SpanStyled>}</TitleStyled>}
       <ImgStyled src={image} alt="" onLoad={handleImageLoad} />
       </BackingStyled>
       

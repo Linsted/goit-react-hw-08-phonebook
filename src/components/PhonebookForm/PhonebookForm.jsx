@@ -40,8 +40,13 @@ export const PhonebookForm = () => {
                 
                 if (existingContact.length > 0) {
                     
+                    
                     toast.error(`${values.name} updated`);
-                    dispatch(updateContact(existingContact[0]))
+                    dispatch(updateContact({
+                        id: existingContact[0].id,
+                        name: values.name,
+                        number:values.phone,
+                    }))
                     resetForm();
                     return;
                 }

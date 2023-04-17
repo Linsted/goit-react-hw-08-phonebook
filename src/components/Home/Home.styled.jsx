@@ -30,7 +30,7 @@ export const TitleStyled = styled.h1`
      top: 50%;
      transform: translate(-50%, -50%);
      font-size: 3.5vw;
-     font-family: 'Lobster', cursive;
+     font-family: cursive;
      text-shadow: 2px 2px 2px #000000;
      color: #ffffff;
     
@@ -40,7 +40,7 @@ export const TitleStyled = styled.h1`
 
 export const NavlinkStyled = styled(NavLink)`
     color: #ffffff;
-    font-size: 2.5vw;
+    font-size: 2.0vw;
     font-family: 'Roboto', sans-serif;
     text-decoration: none;
     

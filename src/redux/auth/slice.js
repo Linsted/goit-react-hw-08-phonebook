@@ -11,30 +11,30 @@ const initialState = {
 
 
 const authSlice = createSlice({
-    name: 'auth',
-    initialState,
+  name: 'auth',
+  initialState,
     
-    extraReducers: {
-        [register.fulfilled](state, action) {
-            console.log(action)
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
-        },
-        [register.rejected]() {
-            console.log("rejected in slice")
-        },
-        [logIn.fulfilled](state, action) {
-            state.user = action.payload.user;
-            state.token = action.payload.token;
-            state.isLoggedIn = true;
-        },
-        [logOut.fulfilled](state) {
-            state.user = { name: null, email: null };
-            state.token = null;
-            state.isLoggedIn = false;
-        },
-        [refreshUser.pending](state) {
+  extraReducers: {
+    [register.fulfilled](state, action) {
+      console.log(action)
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [register.rejected]() {
+      console.log("rejected in slice")
+    },
+    [logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [logOut.fulfilled](state) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+    },
+    [refreshUser.pending](state) {
       state.isRefreshing = true;
     },
     [refreshUser.fulfilled](state, action) {
@@ -45,7 +45,7 @@ const authSlice = createSlice({
     [refreshUser.rejected](state) {
       state.isRefreshing = false;
     },
-    }
+  }
 
 });
 
