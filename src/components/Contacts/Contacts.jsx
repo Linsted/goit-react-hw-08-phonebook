@@ -5,19 +5,18 @@ import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
 
-export const Contacts = ({contacts}) => {
+export const Contacts = ({ contacts }) => {
   
     const dispatch = useDispatch();
 
     return (
-        <>  
-            
-            <List>{contacts.map(contact => <ListItem key={contact.id} contact={contact} onClick={()=>{dispatch(deleteContact(contact.id))}} /> )}</List>
+        <>
+            <List>{contacts.map(contact => <ListItem key={contact.id} contact={contact} onClick={() => { dispatch(deleteContact(contact.id)) }} />)}</List>
         </>
-    )
-}
+    );
+};
 
 Contacts.propTypes = {
     contacts: PropTypes.arrayOf(PropTypes.object.isRequired,).isRequired,
    
-}
+};

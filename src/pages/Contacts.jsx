@@ -1,7 +1,7 @@
 import { Contacts } from "../components/Contacts/Contacts"
 import { FilterContacts } from "../components/FilterContacts/FilterContacts"
 import { PhonebookForm } from "../components/PhonebookForm/PhonebookForm";
-import { Title, WrapperStyled, ContactsInfoStyled } from "../components/Contacts.styled"
+import { Title, WrapperStyled, ContactsInfoStyled } from "../components/Contacts/Contacts.styled"
 import { getContactsFromState,getIsLoading, getError } from "redux/contactsSlice";
 import { getFilterState } from "../../src/redux/filterSlice";
 import { fetchContacts } from "redux/operations";
@@ -40,14 +40,14 @@ const ContactsPage = () => {
 
       <WrapperStyled>
 
-        <Title>Phonebook</Title>
+        <Title>Add new contact</Title>
         
         < PhonebookForm />
       </WrapperStyled>
         
     <WrapperStyled>
       
-      <Title>Contacts</Title>
+      <Title>Phonebook</Title>
       <ContactsInfoStyled>
         < FilterContacts
           filter={filter}

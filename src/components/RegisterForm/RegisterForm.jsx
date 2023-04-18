@@ -1,13 +1,13 @@
 
-import { Formik, Form,  ErrorMessage } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from 'redux/auth/operations';
-import Button from '@mui/material/Button';
 import toast, { Toaster } from 'react-hot-toast';
-import {InputStyledName,InputStyledMail, InputStyledPassword } from "./RegisterForm.styled"
+import {InputStyledName, LabelStyled, InputStyledMail, InputStyledPassword, FormStyled } from "./RegisterForm.styled"
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-
+import { Button } from 'components/PhonebookForm/PhoneBook.styled';
+import { Title } from 'components/Contacts/Contacts.styled';
 
 
 
@@ -46,7 +46,7 @@ export const RegisterForm = () => {
     };
 
     return (
-        <div>
+        <>
             <Toaster />
             <Formik
                 validationSchema={validationSchema}
@@ -58,53 +58,28 @@ export const RegisterForm = () => {
                 onSubmit={handleSubmit}
             >
                 {() => (
-                    <Form>
-                        <label htmlFor="name">Name
-                        <InputStyledName type="text" name="name" id="name" error={errorValidationName.toString()} />
-                        <ErrorMessage name="name" /></label>
+                    <FormStyled>
+                        <Title>Registration form</Title>
+                        <LabelStyled htmlFor="name">Your name
+                        <InputStyledName placeholder="Enter  your name" type="text" name="name" id="name" error={errorValidationName.toString()} />
+                        <ErrorMessage name="name" /></LabelStyled>
 
-                        <label htmlFor="email">Email
-                        <InputStyledMail type="email" name="email" id="email" error={errorValidationMail.toString()} />
-                        <ErrorMessage name="email" /></label>
+                        <LabelStyled htmlFor="email">Your e-mail
+                        <InputStyledMail placeholder="Enter  your e-mail" type="email" name="email" id="email" error={errorValidationMail.toString()} />
+                        <ErrorMessage name="email" /></LabelStyled>
 
-                        <label htmlFor="password">Password
-                        <InputStyledPassword type="password" name="password" id="password" error={errorValidationPassword.toString()} />
-                        <ErrorMessage name="password" /></label>
+                        <LabelStyled htmlFor="password">Your password
+                        <InputStyledPassword placeholder="Enter  your password" type="password" name="password" id="password" error={errorValidationPassword.toString()} />
+                        <ErrorMessage name="password" /></LabelStyled>
 
-                        <Button color="secondary" variant="outlined" type='submit'>Sign Up</Button>
-                    </Form>
+                        <Button  type='submit'>Sign Up</Button>
+                    </FormStyled>
                 )}
             </Formik>
-        </div>
+        </>
     );
 };
 
 
 
-
-// export const RegisterForm = () => { 
-
-// const validationSchema = object().shape({
-//     name: string().required(),
-//     phone: string().required(),
-// });
-    
-    
-    
-//     return (<>
-
-//         <div>
-//             <Formik
-//                 validationSchema={validationSchema}
-//                 initialValues={{
-//                     name: '',
-//                     email: ``,
-//                     password: ''}}
-//             >
-                
-//                 <Formik />
-//         </div>
-   
-//     </>);
-// };
 

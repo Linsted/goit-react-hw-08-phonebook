@@ -36,7 +36,7 @@ export const PhonebookForm = () => {
                 const existingContact = contacts.filter(({name}) => { return name === values.name });
                 
                 if (existingContact.length > 0) {
-                    toast.error(`${values.name} updated`);
+                    toast.error(`Contact ${values.name} updated`);
                     dispatch(updateContact({
                         id: existingContact[0].id,
                         name: values.name,
@@ -53,12 +53,12 @@ export const PhonebookForm = () => {
             <FormStyled>
                  <Toaster />
                 <Label>Name
-                    <FieldStyled placeholder="Add contact name" name="name"/>
+                    <FieldStyled placeholder="Enter  contact name" name="name"/>
                 </Label>
                 <Label>
                     Phone
                     <FieldStyled
-                        placeholder="Add contact phone"
+                        placeholder="Enter  contact phone"
                         type="phone"
                         name="phone"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

@@ -11,9 +11,7 @@ export const ListItem = ({ contact: { name, number: phone, id }, onClick }) => {
     
 
 
-    const handleCancel = () => {
-        setShowConfirmation(false);
-    };
+    const handleCancel = () => setShowConfirmation(false);
     const handleDelete = (id) => {
         setShowConfirmation(false);
         onClick(id)
@@ -23,7 +21,7 @@ export const ListItem = ({ contact: { name, number: phone, id }, onClick }) => {
         id,
         handleCancel,
         handleDelete,
-    }
+    };
 
     return (
         <>
@@ -38,12 +36,13 @@ export const ListItem = ({ contact: { name, number: phone, id }, onClick }) => {
 };
 
 ListItem.propTypes = {
-contact: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,}).isRequired,
-onClick: PropTypes.func.isRequired,
-}
+    contact: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+    }).isRequired,
+    onClick: PropTypes.func.isRequired,
+};
 
 
 

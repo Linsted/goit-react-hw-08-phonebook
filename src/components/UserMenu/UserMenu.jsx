@@ -1,7 +1,8 @@
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import { DivStyled, MailStyled } from './UserMenu.styled';
+import { DivStyled, MailStyled,Button  } from './UserMenu.styled';
+
 
 
 export const UserMenu = () => { 

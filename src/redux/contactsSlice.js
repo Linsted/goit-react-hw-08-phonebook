@@ -51,7 +51,6 @@ const contactsSlice = createSlice({
     [updateContact.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
-      console.log(action.payload);
       const index = state.items.findIndex(
         task => task.id === action.payload.id);
       state.items.splice(index, 1, action.payload);

@@ -11,7 +11,8 @@ export const FilterContacts = ({ filter }) => {
 
 
     return (
-        <Label> Find contacts in your list. Simply enter the name you're looking for. <IconStyled />
+        <Label> Find contacts in your list. Simply enter the name you're looking for.
+            <IconStyled />
             <InputStyled placeholder='Contact name' type="text" name='filter' onChange={(evt) => {
                 dispatch(filterContact(evt.target.value))
             }} value={filter} />
