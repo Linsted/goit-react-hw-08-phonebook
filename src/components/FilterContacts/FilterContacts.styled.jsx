@@ -27,7 +27,12 @@ padding: 10px;
 
   &::placeholder{
      color: #999;
-  }
+
+  };
+&:focus::placeholder {
+  opacity: 0;
+}
+
 `;
 
 export const IconStyled = styled(BiSearchAlt)`

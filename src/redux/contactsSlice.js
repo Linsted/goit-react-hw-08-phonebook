@@ -12,12 +12,6 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const handleFulfilled = (state, action) => {
-  state.isLoading = false;
-  state.error = null;
-  state.items.push(action.payload);
-}
-
 
 const contactsInitialState = {
     items: [],

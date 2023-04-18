@@ -7,14 +7,13 @@ import { deleteContact } from 'redux/operations';
 
 export const Contacts = ({contacts}) => {
   
-
     const dispatch = useDispatch();
-    
 
     return (
-        <div>  
+        <>  
+            
             <List>{contacts.map(contact => <ListItem key={contact.id} contact={contact} onClick={()=>{dispatch(deleteContact(contact.id))}} /> )}</List>
-        </div>
+        </>
     )
 }
 

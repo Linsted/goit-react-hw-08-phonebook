@@ -1,13 +1,9 @@
-import { Formik, Field } from 'formik';
+import { Formik } from 'formik';
 import { object, string } from 'yup';
-import { FormStyled, Label, Button,FieldStyled } from './FormStyled.styled';
+import { FormStyled, Label, Button,FieldStyled } from './PhoneBook.styled';
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, updateContact } from 'redux/operations';
 import { getContactsFromState } from 'redux/contactsSlice';
-
-
-
-
 import toast, { Toaster } from 'react-hot-toast';
 
 
@@ -22,8 +18,9 @@ const phoneBookSchema = object().shape({
 
 
 
+
 export const PhonebookForm = () => {
-    // console.log(onSubmit)
+
 
     const contacts = useSelector(getContactsFromState);
     const dispatch = useDispatch();
@@ -36,11 +33,9 @@ export const PhonebookForm = () => {
                 phone: ''}}
             onSubmit={(values, { resetForm }) => {
                 
-                const existingContact = contacts.filter(contact => { return contact.name === values.name });
+                const existingContact = contacts.filter(({name}) => { return name === values.name });
                 
                 if (existingContact.length > 0) {
-                    
-                    
                     toast.error(`${values.name} updated`);
                     dispatch(updateContact({
                         id: existingContact[0].id,
@@ -49,7 +44,7 @@ export const PhonebookForm = () => {
                     }))
                     resetForm();
                     return;
-                }
+                };
 
                 dispatch(addContact({ ...values }));
                 resetForm();
@@ -58,11 +53,12 @@ export const PhonebookForm = () => {
             <FormStyled>
                  <Toaster />
                 <Label>Name
-                    <FieldStyled name="name"/>
+                    <FieldStyled placeholder="Add contact name" name="name"/>
                 </Label>
                 <Label>
-                    Number
+                    Phone
                     <FieldStyled
+                        placeholder="Add contact phone"
                         type="phone"
                         name="phone"
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

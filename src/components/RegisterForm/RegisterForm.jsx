@@ -2,7 +2,7 @@
 import { Formik, Form,  ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { register } from 'redux/auth/operations';
-
+import Button from '@mui/material/Button';
 import toast, { Toaster } from 'react-hot-toast';
 import {InputStyledName,InputStyledMail, InputStyledPassword } from "./RegisterForm.styled"
 import { useState } from 'react';
@@ -71,7 +71,7 @@ export const RegisterForm = () => {
                         <InputStyledPassword type="password" name="password" id="password" error={errorValidationPassword.toString()} />
                         <ErrorMessage name="password" /></label>
 
-                        <button type='submit'>Sign Up</button>
+                        <Button color="secondary" variant="outlined" type='submit'>Sign Up</Button>
                     </Form>
                 )}
             </Formik>
