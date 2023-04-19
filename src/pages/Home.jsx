@@ -3,13 +3,13 @@ import image from "../image/pexels-photomix-company-1038628 (1) (1).jpg";
 import { useSelector } from "react-redux";
 import { BackingStyled, TitleStyled,NavlinkStyled, SpanStyled,ImgStyled } from "components/Home/Home.styled";
 import { useState } from "react";
-
+import { getIasLoggedInSelector } from 'redux/auth/allSelectors';
 
 
 
 
 const Home = () => {
-  const  isLoggedIn  = useSelector(state => state.auth.isLoggedIn) 
+  const  isLoggedIn  = useSelector(getIasLoggedInSelector) 
    const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   

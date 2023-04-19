@@ -2,13 +2,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
 import { DivStyled, MailStyled,Button  } from './UserMenu.styled';
+import { getIasLoggedInSelector, getMail } from 'redux/auth/allSelectors';
 
 
 
 export const UserMenu = () => { 
      const dispatch = useDispatch();
-    const isLogin = useSelector(state => state.auth.isLoggedIn);
-    const userMail = useSelector(state => state.auth.user.email)
+    const isLogin = useSelector(getIasLoggedInSelector);
+    const userMail = useSelector(getMail);
 
 
 

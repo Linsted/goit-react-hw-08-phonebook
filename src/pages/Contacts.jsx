@@ -1,12 +1,13 @@
 import { Contacts } from "../components/Contacts/Contacts"
 import { FilterContacts } from "../components/FilterContacts/FilterContacts"
 import { PhonebookForm } from "../components/PhonebookForm/PhonebookForm";
-import { Title, WrapperStyled, ContactsInfoStyled } from "../components/Contacts/Contacts.styled"
+import { Title, WrapperStyled, ContactsInfoStyled, WrapperSpinnerStyled } from "../components/Contacts/Contacts.styled"
 import { getContactsFromState,getIsLoading, getError } from "redux/contactsSlice";
 import { getFilterState } from "../../src/redux/filterSlice";
 import { fetchContacts } from "redux/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { Puff } from "react-loader-spinner";
 
 
 const ContactsPage = () => {
@@ -52,7 +53,15 @@ const ContactsPage = () => {
         < FilterContacts
           filter={filter}
         />
-        {isLoading && !error && <b>Request in progress...</b>}
+        {isLoading && !error && <WrapperSpinnerStyled><Puff
+            height="40"
+            width="40"
+            radius={1}
+            color="#e582b4"
+            ariaLabel="puff-loading"
+            wrapperClass=""
+            visible={true}
+        /></WrapperSpinnerStyled>}
         < Contacts
           contacts={filteredContacts}
           

@@ -10,6 +10,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { RedirectedRoute } from './RedirectedRoute';
 
 import { Fallback } from './Fallback/Falback';
+import { getIsRefreshing } from 'redux/auth/allSelectors';
 
 
 // import ContactsPage from "../pages/Contacts"
@@ -24,7 +25,7 @@ const Login = lazy(() => import('../pages/Login'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isRefreshing = useSelector(state => state.auth.isRefreshing);
+  const isRefreshing = useSelector(getIsRefreshing);
 
 
 

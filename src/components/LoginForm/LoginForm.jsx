@@ -27,7 +27,6 @@ export const LoginForm = () => {
 
     const handleSubmit = (values, { resetForm }) => {
         if (!values.email || !values.password) {
-            console.log(values)
             toast.error(`Please fill in all fields!`,{ duration: 1500 })
             !values.email ?   setErrorValidationMail(true) : setErrorValidationMail(false) ;
             !values.password ?   setErrorValidationPassword(true) : setErrorValidationPassword(false) ;

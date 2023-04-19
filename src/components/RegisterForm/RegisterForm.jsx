@@ -5,9 +5,11 @@ import { register } from 'redux/auth/operations';
 import toast, { Toaster } from 'react-hot-toast';
 import {InputStyledName, LabelStyled, InputStyledMail, InputStyledPassword, FormStyled } from "./RegisterForm.styled"
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'components/PhonebookForm/PhoneBook.styled';
 import { Title } from 'components/Contacts/Contacts.styled';
+import { FcLeave } from "react-icons/fc";
+import { getIasLoggedInSelector } from 'redux/auth/allSelectors';
 
 
 
@@ -17,6 +19,7 @@ export const RegisterForm = () => {
     const [errorValidationMail, setErrorValidationMail] = useState(false);
     const [errorValidationPassword, setErrorValidationPassword] = useState(false);
     const dispatch = useDispatch();
+    const  isLoggedIn  = useSelector(getIasLoggedInSelector)
 
     const validationSchema = Yup.object().shape({
         name: Yup.string().required(()=>{}),
@@ -71,11 +74,13 @@ export const RegisterForm = () => {
                         <LabelStyled htmlFor="password">Your password
                         <InputStyledPassword placeholder="Enter  your password" type="password" name="password" id="password" error={errorValidationPassword.toString()} />
                         <ErrorMessage name="password" /></LabelStyled>
-
-                        <Button  type='submit'>Sign Up</Button>
+                        {isLoggedIn && <p style={{ color: "red", fontSize: "22px" }}><FcLeave /> Please note that you already have an account.</p>}
+                        <Button type='submit'>Create account</Button>
+                        
                     </FormStyled>
                 )}
             </Formik>
+
         </>
     );
 };

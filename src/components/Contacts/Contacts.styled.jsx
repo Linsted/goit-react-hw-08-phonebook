@@ -48,4 +48,10 @@ export const List = styled.ul`
     flex-direction: column;
     gap: 10px;
     padding: 0;
-`
+`;
+
+export const WrapperSpinnerStyled = styled.div`
+    display: flex;
+  justify-content: center;
+  align-items: center;
+`;

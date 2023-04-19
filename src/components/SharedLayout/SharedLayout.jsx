@@ -5,11 +5,11 @@ import { UserMenu } from "components/UserMenu/UserMenu";
 import { HeaderStyled, NavStyled, NavLinkStyled  } from "./SharedLayout.styled";
 import { useSelector } from 'react-redux';
 import { Fallback } from "components/Fallback/Falback";
-
+import { getIasLoggedInSelector } from 'redux/auth/allSelectors';
 
 
 export const SharedLayout = () => {
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const isLoggedIn = useSelector(getIasLoggedInSelector);
     
 
     return (<>
