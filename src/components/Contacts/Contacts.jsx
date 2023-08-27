@@ -4,19 +4,26 @@ import { List } from './Contacts.styled';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-
 export const Contacts = ({ contacts }) => {
-  
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    return (
-        <>
-            <List>{contacts.map(contact => <ListItem key={contact.id} contact={contact} onClick={() => { dispatch(deleteContact(contact.id)) }} />)}</List>
-        </>
-    );
+  return (
+    <>
+      <List>
+        {contacts.map(contact => (
+          <ListItem
+            key={contact.id}
+            contact={contact}
+            onClick={() => {
+              dispatch(deleteContact(contact.id));
+            }}
+          />
+        ))}
+      </List>
+    </>
+  );
 };
 
 Contacts.propTypes = {
-    contacts: PropTypes.arrayOf(PropTypes.object.isRequired,).isRequired,
-   
+  contacts: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
 };

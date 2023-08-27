@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
-import {  keyframes } from '@emotion/react';
-
+import { keyframes } from '@emotion/react';
 
 const pulse = keyframes`
   0% {
@@ -15,36 +14,29 @@ const pulse = keyframes`
   }
 `;
 
-
-
 export const BackingStyled = styled.div`
-position: relative;
-width: 100%;
-height: auto;
-margin-top: 2px;
-   
-`
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 2px;
+`;
 
 export const TitleStyled = styled.h1`
-     position: absolute;
-     left: 50%;
-     top: 50%;
-     transform: translate(-50%, -50%);
-     font-size: 3.5vw;
-     font-family: cursive;
-     text-shadow: 2px 2px 2px #000000;
-     color: #ffffff;
-    
-     
-     
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3.5vw;
+  font-family: cursive;
+  text-shadow: 2px 2px 2px #000000;
+  color: #ffffff;
 `;
 
 export const NavlinkStyled = styled(NavLink)`
-    color: #ffffff;
-    font-size: 2.0vw;
-    font-family: 'Roboto', sans-serif;
-    text-decoration: none;
-    
+  color: #ffffff;
+  font-size: 2vw;
+  font-family: 'Roboto', sans-serif;
+  text-decoration: none;
 `;
 
 export const SpanStyled = styled.span`
@@ -54,10 +46,9 @@ export const SpanStyled = styled.span`
   align-items: center;
   border-radius: 24px;
   animation: ${pulse} 2s ease-in-out infinite;
-
 `;
 
 export const ImgStyled = styled.img`
-      max-width: 100%;
+  max-width: 100%;
   height: auto;
-`
+`;

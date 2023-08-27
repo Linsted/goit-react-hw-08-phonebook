@@ -1,42 +1,47 @@
-
-import { useCallback, useEffect } from "react";
-import { ModalStyled, ModalContentStyled, ModalTextStyled, ModalButtonStyled } from "./ModalWindow.styled";
+import { useCallback, useEffect } from 'react';
+import {
+  ModalStyled,
+  ModalContentStyled,
+  ModalTextStyled,
+  ModalButtonStyled,
+} from './ModalWindow.styled';
 import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 
-export const ModalWindow = ({id, handleDelete,handleCancel}) => {
+export const ModalWindow = ({ id, handleDelete, handleCancel }) => {
+  const handleCloseByBackdrope = useCallback(
+    event => {
+      if (event.target === event.currentTarget) handleCancel();
+    },
+    [handleCancel]
+  );
 
-    
-    const handleCloseByBackdrope = useCallback((event) => {
-        if (event.target === event.currentTarget) handleCancel()
-    }, [handleCancel]);
+  useEffect(() => {
+    window.addEventListener('mousedown', handleCloseByBackdrope);
 
-    useEffect(() => {
-        window.addEventListener('mousedown', handleCloseByBackdrope);
+    return () => {
+      window.removeEventListener('mousedown', handleCloseByBackdrope);
+    };
+  }, [handleCloseByBackdrope]);
 
-        return () => {
-            window.removeEventListener('mousedown', handleCloseByBackdrope);
-        };
-
-    }, [handleCloseByBackdrope]);
-    
-   
-    
-    return createPortal (
-        
-        <ModalStyled onClick ={handleCloseByBackdrope}>
-                    <ModalContentStyled>
-                        <ModalTextStyled>Are you sure you want to delete this contact?</ModalTextStyled>
-                        <ModalButtonStyled onClick={handleCancel}>Cancel</ModalButtonStyled>
-                        <ModalButtonStyled onClick={()=> handleDelete(id)}>Delete</ModalButtonStyled>
-                    </ModalContentStyled>
-                </ModalStyled>,  document.querySelector("#modal-root")
-        
-    )
+  return createPortal(
+    <ModalStyled onClick={handleCloseByBackdrope}>
+      <ModalContentStyled>
+        <ModalTextStyled>
+          Are you sure you want to delete this contact?
+        </ModalTextStyled>
+        <ModalButtonStyled onClick={handleCancel}>Cancel</ModalButtonStyled>
+        <ModalButtonStyled onClick={() => handleDelete(id)}>
+          Delete
+        </ModalButtonStyled>
+      </ModalContentStyled>
+    </ModalStyled>,
+    document.querySelector('#modal-root')
+  );
 };
 
 ModalWindow.propTypes = {
-    id: PropTypes.string.isRequired,
-    handleDelete: PropTypes.func.isRequired,
-    handleCancel: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
 };

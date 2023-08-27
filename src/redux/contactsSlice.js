@@ -1,7 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts,addContact,deleteContact,updateContact } from "./operations";
-
-
+import { createSlice } from '@reduxjs/toolkit';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -12,23 +15,20 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-
 const contactsInitialState = {
-    items: [],
-    isLoading: false,
-    error: null
-  };
-
-
-  
+  items: [],
+  isLoading: false,
+  error: null,
+};
 
 const contactsSlice = createSlice({
-  name: "contacts",
+  name: 'contacts',
   initialState: contactsInitialState,
 
   extraReducers: {
-        
-    [fetchContacts.fulfilled](state, action) { state.items = action.payload },
+    [fetchContacts.fulfilled](state, action) {
+      state.items = action.payload;
+    },
     [fetchContacts.rejected]: handleRejected,
 
     [addContact.pending]: handlePending,
@@ -43,8 +43,9 @@ const contactsSlice = createSlice({
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
       const index = state.items.findIndex(
-        task => task.id === action.payload.id);
-      state.items.splice(index, 1)
+        task => task.id === action.payload.id
+      );
+      state.items.splice(index, 1);
     },
     [deleteContact.rejected]: handleRejected,
     [updateContact.pending]: handlePending,
@@ -52,19 +53,16 @@ const contactsSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       const index = state.items.findIndex(
-        task => task.id === action.payload.id);
+        task => task.id === action.payload.id
+      );
       state.items.splice(index, 1, action.payload);
-
     },
     [updateContact.rejected]: handleRejected,
-
-
   },
 });
 
-
 export const contactsReducer = contactsSlice.reducer;
 
-export const getContactsFromState = (state) => state.contacts.items;
+export const getContactsFromState = state => state.contacts.items;
 export const getIsLoading = state => state.contacts.isLoading;
 export const getError = state => state.contacts.error;

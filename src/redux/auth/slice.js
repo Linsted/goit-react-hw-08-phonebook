@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, logIn, logOut,refreshUser } from './operations';
-
+import { register, logIn, logOut, refreshUser } from './operations';
 
 const initialState = {
   user: { name: null, email: null },
@@ -9,20 +8,18 @@ const initialState = {
   isRefreshing: false,
 };
 
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-    
+
   extraReducers: {
     [register.fulfilled](state, action) {
-      console.log(action)
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
     [register.rejected]() {
-      console.log("rejected in slice")
+      console.error('rejected in slice');
     },
     [logIn.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -45,8 +42,7 @@ const authSlice = createSlice({
     [refreshUser.rejected](state) {
       state.isRefreshing = false;
     },
-  }
-
+  },
 });
 
 export const authReducer = authSlice.reducer;
